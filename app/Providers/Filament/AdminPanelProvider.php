@@ -18,7 +18,7 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-
+use Filament\FontProviders\GoogleFontProvider;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->font('IBM Plex Sans Arabic')
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -38,8 +39,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                // AccountWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
