@@ -60,4 +60,13 @@ protected static ?string $recordTitleAttribute = 'title_en';
                 SoftDeletingScope::class,
             ]);
     }
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
+public static function getNavigationBadgeColor(): string|array|null
+{
+    return static::getModel()::where('status', 'new')->count() > 0 ? 'warning' : 'gray';
+}
 }

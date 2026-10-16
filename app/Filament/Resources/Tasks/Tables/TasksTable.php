@@ -126,6 +126,15 @@ class TasksTable
                     RestoreBulkAction::make(),
                 ]),
             ])
-            ->defaultSort('due_date', 'asc'); // الترتيب الافتراضي الذكي
-    }
+            ->defaultSort('due_date', 'asc')->emptyStateHeading('لا توجد مهام بعد')
+->emptyStateDescription('ابدأ بإضافة مهمتك الأولى')
+->emptyStateIcon('heroicon-o-clipboard-document-list')
+->emptyStateActions([
+    \Filament\Actions\CreateAction::make()
+        ->label('أضف مهمة جديدة')
+        ->icon('heroicon-m-plus'),
+]); // الترتيب الافتراضي الذكي
+    
+            }
+            
 }
